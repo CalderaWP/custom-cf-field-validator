@@ -23,8 +23,6 @@ function my_custom_cf_validator_processor($processors){
     );
 
     return $processors;
-
-
 }
 
 /**
@@ -44,7 +42,7 @@ function my_custom_validator( array $config, array $form ){
     $value = $data->get_value( 'field-to-validate' );
 
     //if not valid, return an error
-    if( ! in_array( $value, my_custom_cf_validator_valid_values() ) ){
+    if( false == my_custom_cf_validator_is_valid( $value ) ){
 
         //get ID of field to put error on
         $fields = $data->get_fields();
@@ -73,21 +71,25 @@ function my_custom_validator( array $config, array $form ){
 
 
 /**
- * Get an array of valid values
+ * Check if value is valid
  *
  * UPDATE THIS! Use your array of values, or query the database here.
  *
- * @return array
+ * @return bool
  */
-function my_custom_cf_validator_valid_values(){
-    return array(
+function my_custom_cf_validator_is_valid( $value ){
+    return in_array( $value, array(
         'Han Solo',
         'Chewbacca',
         'Rey'
-    );
+    ) );
 }
 
-
+/**
+ * Processor fields
+ *
+ * @return array
+ */
 function my_custom_cf_validator_fields(){
     return array(
         array(
