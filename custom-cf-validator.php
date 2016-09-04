@@ -18,7 +18,7 @@ function my_custom_cf_validator_processor($processors){
         'name' => __('Custom Validator', 'my-text-domain' ),
         'description' => '',
         'pre_processor' => 'my_custom_validator',
-        'template' => dirname(__FILE__) . '/custom-validator-config.php'
+        'template' => dirname(__FILE__) . '/config.php'
 
     );
 
